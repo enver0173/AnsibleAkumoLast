@@ -1,0 +1,8 @@
+---
+  - name: Ping Hosts
+    hosts: prod
+    gather_facts: no
+    tasks:
+      - name: Ping Hosts
+        ping:
+        when: "'prod' in group_names"
