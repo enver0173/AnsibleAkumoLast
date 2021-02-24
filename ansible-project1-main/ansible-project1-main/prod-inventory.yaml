@@ -1,0 +1,8 @@
+---
+all:
+  hosts:
+  children:
+    prod:
+      hosts:
+        centos:
+          ansible_host: 
