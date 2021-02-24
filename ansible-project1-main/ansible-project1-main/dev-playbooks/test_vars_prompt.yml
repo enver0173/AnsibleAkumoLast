@@ -1,0 +1,11 @@
+---
+  - name: Ping Hosts
+    hosts: all
+    vars_prompt:
+      - name: "facts"
+        prompt: "Gather Facts?"
+        private: no
+    gather_facts: no  
+    tasks:
+      - name: Ping Hosts
+        ping:

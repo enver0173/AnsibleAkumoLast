@@ -1,0 +1,7 @@
+centos_packages:
+  - vim
+  - wget
+  - curl
+#ubuntu_packages:
+#  - wget
+#  - vim

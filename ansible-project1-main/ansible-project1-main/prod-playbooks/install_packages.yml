@@ -1,28 +1,21 @@
 ---
-  - name: Install Packages on CentOS and Ubuntu
-    hosts: all
+  - name: "{{ play_name }}"
+    hosts: "{{ servers }}"
     vars:
-      custom: pwd
-      packages: 
-        - vim
-        - curl
-        - wget
-        - git
-        - tree
-    gather_facts: yes
+      facts: no
+    vars_files:
+      - "install_packages_task-vars.yml"
+      - "install_packages_play-vars.yml"
+    gather_facts: "{{ facts }}"
     tasks:
       - name: Install packages on CentOS
         when: ansible_facts['distribution'] == "CentOS"
         yum:
-          name: "{{ packages }}"
+          name: "{{ centos_packages }}"
           state: latest
       
-      - name: Install packages on Ubuntu
-        when: ansible_facts['distribution'] == "Ubuntu"
-        apt:
-          name: "{{ packages }}"
-          state: latest
-      
-      - name: Run a task 
-        shell:
-          cmd: "{{ custom }}"
+      #- name: Install packages on Ubuntu
+      #  when: ansible_facts['distribution'] == "Ubuntu"
+      #  apt:
+      #    name: "{{ packages }}"
+      #    state: latest
